@@ -1,13 +1,14 @@
 VERSION 0.7
 PROJECT earthly-sa/earthly-demo
 
+FROM rust:1.66-slim-buster
+
 rust-server-pipeline:
   PIPELINE 
   TRIGGER push main 
   TRIGGER pr main 
   BUILD +build
 
-FROM rust:1.66-slim-buster
 WORKDIR /rust-server
 
 deps:
