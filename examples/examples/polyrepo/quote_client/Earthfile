@@ -1,0 +1,20 @@
+VERSION 0.6
+FROM node:19.5.0-buster-slim 
+WORKDIR /quote-client
+
+deps:
+  COPY --dir src public index.html package.json tsconfig.json tsconfig.node.json vite.config.ts yarn.lock .
+  RUN yarn global add typescript
+  RUN yarn
+  
+build:
+  FROM +deps
+  RUN VITE_RUST_SERVER=http://localhost:8000 yarn build
+  SAVE ARTIFACT dist/ 
+
+docker:
+  FROM nginx:latest 
+  COPY +build/dist /usr/share/nginx/html/
+  EXPOSE 80 
+  SAVE IMAGE --push docker.io/ezeev/earthly-react-example:latest
+

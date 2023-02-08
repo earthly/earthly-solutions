@@ -1,0 +1,12 @@
+version: "3"
+services:
+  react:
+    platform: linux/amd64
+    image: ezeev/earthly-react-example:latest
+    ports:
+      - 3000:80 
+  rust:
+    platform: linux/amd64
+    image: ezeev/earthly-rust-example:latest   
+    ports:
+      - 8000:8000
