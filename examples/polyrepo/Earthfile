@@ -1,5 +1,13 @@
 
 VERSION 0.6
+PROJECT earthly-sa/earthly-demo
+
+main-pipeline:
+  PIPELINE 
+  TRIGGER push main 
+  TRIGGER pr main 
+  BUILD +all-docker
+
 
 all-docker:
   BUILD ./quote_client/+docker
