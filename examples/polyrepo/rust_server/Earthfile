@@ -23,4 +23,4 @@ docker:
   COPY Rocket.toml Rocket.toml
   EXPOSE 8000
   ENTRYPOINT ["./quote_server"]
-  SAVE IMAGE ezeev/earthly-rust-example:latest
+  SAVE IMAGE --push ezeev/earthly-rust-example:latest
