@@ -2,6 +2,7 @@ VERSION 0.7
 PROJECT earthly-sa/earthly-demo
 
 FROM rust:1.66-slim-buster
+WORKDIR /rust-server
 
 rust-server-pipeline:
   PIPELINE 
@@ -9,7 +10,6 @@ rust-server-pipeline:
   TRIGGER pr main 
   BUILD +build
 
-WORKDIR /rust-server
 
 deps:
   COPY --dir src Cargo.lock Cargo.toml Rocket.toml .
