@@ -10,3 +10,8 @@ services:
     image: ezeev/earthly-rust-example:latest   
     ports:
       - 8000:8000
+  go:
+    platform: linux/amd64 
+    image: ezeev/earthly-go-example:latest 
+    ports:
+      - 8001:8001

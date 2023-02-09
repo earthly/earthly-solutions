@@ -12,6 +12,7 @@ main-pipeline:
 all-docker:
   BUILD ./quote_client/+docker
   BUILD ./rust_server/+docker
+  BUILD ./go_server/+docker
 
 dev-up:
   LOCALLY

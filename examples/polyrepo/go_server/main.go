@@ -7,9 +7,14 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+
+
+
+
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Hello")
+    fmt.Println(RandomQuote())
+		fmt.Fprint(w, RandomQuote())
 	})
 
 	logrus.Info("Serving Go server on poirt 8001")
