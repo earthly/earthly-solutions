@@ -13,15 +13,18 @@ const servers: Server[] = [
     address: import.meta.env.VITE_RUST_SERVER,
     description: 'Response from Rust server',
   },
+  {
+    address: import.meta.env.VITE_GO_SERVER,
+    description: 'Response from Go server',
+  },
 ]
 
 function App() {
-  const rustServer: string = import.meta.env.VITE_RUST_SERVER
 
   const [_servers, setServers] = useState<Server[]>(servers)
 
   useEffect(() => {
-    console.log("SERVERS")
+    console.log('SERVERS')
     console.log(servers)
     setServers(servers)
   }, [])
@@ -42,7 +45,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Earthly Demo</h1>
+      <h1>Earthly Polyrepo Demo</h1>
       <div className='card'>
         <button
           onClick={async () => {

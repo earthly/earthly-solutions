@@ -4,7 +4,7 @@ services:
     platform: linux/amd64
     image: ezeev/earthly-react-example:latest
     ports:
-      - 3000:80 
+      - 3001:80 
   rust:
     platform: linux/amd64
     image: ezeev/earthly-rust-example:latest   

@@ -13,7 +13,9 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-    fmt.Println(RandomQuote())
+    w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+    w.Header().Set("Access-Control-Allow-Origin", "*")
+    w.Header().Set("Access-Control-Max-Age", "15")
 		fmt.Fprint(w, RandomQuote())
 	})
 
