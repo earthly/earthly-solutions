@@ -2,16 +2,16 @@ version: "3"
 services:
   react:
     platform: linux/amd64
-    image: ezeev/earthly-react-example:ci-build-0.3
+    image: ezeev/earthly-react-example:${TAG}
     ports:
       - 3001:80 
   rust:
     platform: linux/amd64
-    image: ezeev/earthly-rust-example:ci-build-0.3
+    image: ezeev/earthly-rust-example:${TAG}
     ports:
       - 8000:8000
   go:
     platform: linux/amd64 
-    image: ezeev/earthly-go-example:ci-build-0.3
+    image: ezeev/earthly-go-example:${TAG}
     ports:
       - 8001:8001

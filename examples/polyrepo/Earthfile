@@ -28,8 +28,9 @@ all-docker:
   BUILD ./go_server/+docker --tag=$tag
 
 dev-up:
+  ARG --required tag
   LOCALLY
-  RUN docker-compose up
+  RUN TAG=$tag docker-compose up
 
 dev-down:
   LOCALLY
