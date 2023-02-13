@@ -9,14 +9,17 @@ deps:
   
 build:
   FROM +deps
-  RUN VITE_RUST_SERVER=http://localhost:8000 \
-    VITE_GO_SERVER=http://localhost:8001 \
+  ARG --required rust_server
+  ARG --required go_server
+  RUN VITE_RUST_SERVER=$rust_server \
+    VITE_GO_SERVER=$go_server \
     yarn build
   SAVE ARTIFACT dist/ 
 
 docker:
   FROM nginx:latest 
+  ARG --required tag
   COPY +build/dist /usr/share/nginx/html/
   EXPOSE 80 
-  SAVE IMAGE --push ezeev/earthly-react-example:latest
+  SAVE IMAGE --push ezeev/earthly-react-example:$tag
 

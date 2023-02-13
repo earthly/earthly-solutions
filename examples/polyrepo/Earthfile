@@ -6,18 +6,24 @@ main-pipeline:
   PIPELINE 
   TRIGGER push main 
   TRIGGER pr main 
-  BUILD +all-docker
+  BUILD +all-docker --base_url=http://localhost --tag=ci-build-0.1
 
-
+all-build:
+  ARG --required base_url 
+  BUILD ./quote_client/+build --rust_server=$base_url:8000 --go_server=$base_url:8001
+  BUILD ./rust_server/+build
+  BUILD ./go_server/+build
+ 
 all-docker:
-  BUILD ./quote_client/+docker
-  BUILD ./rust_server/+docker
-  BUILD ./go_server/+docker
+  ARG --required base_url
+  ARG --required tag
+  BUILD ./quote_client/+docker --tag=$tag --rust_server=$base_url:8000 --go_server=$base_url:8001
+  BUILD ./rust_server/+docker --tag=$tag
+  BUILD ./go_server/+docker --tag=$tag
 
 dev-up:
   LOCALLY
   RUN docker-compose up
-
 
 dev-down:
   LOCALLY

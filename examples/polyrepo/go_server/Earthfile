@@ -21,7 +21,8 @@ build:
   SAVE ARTIFACT build/go-server go-server 
 
 docker:
+  ARG --required tag
   COPY +build/go-server . 
   EXPOSE 8001
   ENTRYPOINT ["./go-server"]
-  SAVE IMAGE --push ezeev/earthly-go-example:latest
+  SAVE IMAGE --push ezeev/earthly-go-example:$tag
