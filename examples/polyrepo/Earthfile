@@ -6,17 +6,14 @@ main-pipeline:
   PIPELINE 
   TRIGGER push main 
   TRIGGER pr main 
-  BUILD +all-test
   BUILD +all-build --base_url=http://localhost
   BUILD +all-docker --tag=ci-build-0.3 --base_url=http://localhost
 
-all-test:
-  BUILD ./quote_client/+test 
-  BUILD ./rust_server/+test 
-  BUILD ./go_server/+test
-
 all-build:
   ARG --required base_url 
+  WAIT
+    BUILD ./rust_server/+test
+  END
   BUILD ./quote_client/+build --base_url=$base_url
   BUILD ./rust_server/+build
   BUILD ./go_server/+build
