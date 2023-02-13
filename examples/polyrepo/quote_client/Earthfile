@@ -6,7 +6,12 @@ deps:
   COPY --dir src public index.html package.json tsconfig.json tsconfig.node.json vite.config.ts yarn.lock .
   RUN yarn global add typescript
   RUN yarn
-  
+
+
+test:
+  FROM +deps
+  RUN echo TODO: Implement react tests here
+
 build:
   FROM +deps
   ARG --required base_url   
