@@ -13,6 +13,8 @@ all-build:
   ARG --required base_url 
   WAIT
     BUILD ./rust_server/+test
+    BUILD ./go_server/+test
+    BUILD ./quote_client/+test
   END
   BUILD ./quote_client/+build --base_url=$base_url
   BUILD ./rust_server/+build
