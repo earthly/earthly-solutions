@@ -9,10 +9,9 @@ deps:
   
 build:
   FROM +deps
-  ARG --required rust_server
-  ARG --required go_server
-  RUN VITE_RUST_SERVER=$rust_server \
-    VITE_GO_SERVER=$go_server \
+  ARG --required base_url   
+  RUN VITE_RUST_SERVER=$base_url:8000 \
+    VITE_GO_SERVER=$base_url:8001 \
     yarn build
   SAVE ARTIFACT dist/ 
 

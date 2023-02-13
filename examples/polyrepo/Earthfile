@@ -11,13 +11,14 @@ main-pipeline:
 
 all-build:
   ARG --required base_url 
-  BUILD ./quote_client/+build --rust_server=$base_url:8000 --go_server=$base_url:8001
+  BUILD ./quote_client/+build --base_url=$base_url
   BUILD ./rust_server/+build
   BUILD ./go_server/+build
  
 all-docker:
   ARG --required tag
-  BUILD ./quote_client/+docker --tag=$tag 
+  ARG --required base_url
+  BUILD ./quote_client/+docker --tag=$tag --base_url=$base_url
   BUILD ./rust_server/+docker --tag=$tag
   BUILD ./go_server/+docker --tag=$tag
 
