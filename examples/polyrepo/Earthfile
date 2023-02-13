@@ -6,7 +6,8 @@ main-pipeline:
   PIPELINE 
   TRIGGER push main 
   TRIGGER pr main 
-  BUILD +all-docker --base_url=http://localhost --tag=ci-build-0.1
+  BUILD +all-build --base_url=http://localhost
+  BUILD +all-docker --tag=ci-build-0.2
 
 all-build:
   ARG --required base_url 
@@ -15,9 +16,8 @@ all-build:
   BUILD ./go_server/+build
  
 all-docker:
-  ARG --required base_url
   ARG --required tag
-  BUILD ./quote_client/+docker --tag=$tag --rust_server=$base_url:8000 --go_server=$base_url:8001
+  BUILD ./quote_client/+docker --tag=$tag 
   BUILD ./rust_server/+docker --tag=$tag
   BUILD ./go_server/+docker --tag=$tag
 
