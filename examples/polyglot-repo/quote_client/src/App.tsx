@@ -114,7 +114,7 @@ function App() {
             <br />
             <br />
             <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 '>
-              <a href='' target='_blank'>
+              <a href='https://github.com/earthly/earthly-solutions/blob/main/examples/polyglot-repo/Earthfile' target='_blank'>
                 <i className='devicon-github-original align-middle'></i> View
                 Earthfile
               </a>
