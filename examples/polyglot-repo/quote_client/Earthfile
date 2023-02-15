@@ -3,13 +3,15 @@ FROM node:19.5.0-buster-slim
 WORKDIR /quote-client
 
 deps:
-  COPY --dir src public index.html package.json tsconfig.json tsconfig.node.json postcss.config.cjs tailwind.config.cjs vite.config.ts yarn.lock .
+  COPY --dir src index.html package.json tsconfig.json tsconfig.node.json postcss.config.cjs tailwind.config.cjs vite.config.ts yarn.lock .
+  COPY --dir public .
   RUN yarn global add typescript
   RUN yarn
 
 
 test:
   FROM +deps
+  RUN ls public/
   RUN echo TODO: Implement react tests here
 
 build:

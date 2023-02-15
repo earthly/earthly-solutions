@@ -17,7 +17,7 @@ const servers: Server[] = [
     description: 'Response from Rust server',
     iconClass: 'devicon-rust-plain',
     gitLink:
-      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyrepo/rust_server/Earthfile',
+      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyglot-repo/rust_server/Earthfile',
     iconColor: 'orange',
   },
   {
@@ -25,7 +25,7 @@ const servers: Server[] = [
     description: 'Response from Go server',
     iconClass: 'devicon-go-original-wordmark',
     gitLink:
-      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyrepo/go_server/Earthfile',
+      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyglot-repo/go_server/Earthfile',
     iconColor: '#007f9f',
   },
   {
@@ -33,7 +33,7 @@ const servers: Server[] = [
     description: 'Response from Python server',
     iconClass: 'devicon-python-plain',
     gitLink:
-      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyrepo/python_server/Earthfile',
+      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyglot-repo/python_server/Earthfile',
     iconColor: '#ffd343',
   },
   {
@@ -41,7 +41,7 @@ const servers: Server[] = [
     description: 'Response from Node server',
     iconClass: 'devicon-nodejs-plain',
     gitLink:
-      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyrepo/node_server/Earthfile',
+      'https://github.com/earthly/earthly-solutions/blob/main/examples/polyglot-repo/node_server/Earthfile',
     iconColor: '#026e00',
   },
 ]
@@ -77,8 +77,9 @@ function App() {
     <>
       <div className='grid content-center'>
         <div className='w-12/12'>
+          <img src='/logo.png' width='300' />
           <h1 className='text-3xl font-bold underline'>
-            Earthly Multi-language Monorepo Demo
+            Multi-language Monorepo Demo
           </h1>
           <br />
           <button
@@ -110,7 +111,8 @@ function App() {
             </a>{' '}
             for demonstration purposes. There is one front-end written in React
             and four separate backends written in Rust, Go, Python, and Node.js.
-            <br /><br/>
+            <br />
+            <br />
             <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 '>
               <a href='' target='_blank'>
                 <i className='devicon-github-original align-middle'></i> View
