@@ -1,0 +1,43 @@
+
+VERSION 0.7
+PROJECT earthly-sa/earthly-demo
+
+main-pipeline:
+  PIPELINE 
+  TRIGGER push main 
+  TRIGGER pr main 
+  BUILD +all-build --base_url=http://localhost
+  BUILD +all-docker --tag=ci-build-0.7 --base_url=http://localhost
+
+all-build:
+  ARG --required base_url 
+  WAIT
+    BUILD ./rust_server/+test
+    BUILD ./go_server/+test
+    BUILD ./python_server/+test
+    BUILD ./node_server/+test
+    BUILD ./quote_client/+test
+  END
+  BUILD ./quote_client/+build --base_url=$base_url
+  BUILD ./rust_server/+build
+  BUILD ./go_server/+build
+  BUILD ./node_server/+build
+  BUILD ./python_server/+build
+ 
+all-docker:
+  ARG --required tag
+  ARG --required base_url
+  BUILD ./quote_client/+docker --tag=$tag --base_url=$base_url
+  BUILD ./rust_server/+docker --tag=$tag
+  BUILD ./go_server/+docker --tag=$tag
+  BUILD ./python_server/+docker --tag=$tag 
+  BUILD ./node_server/+docker --tag=$tag
+
+dev-up:
+  ARG --required tag
+  LOCALLY
+  RUN TAG=$tag docker-compose up
+
+dev-down:
+  LOCALLY
+  RUN docker-compose down

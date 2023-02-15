@@ -1,0 +1,22 @@
+VERSION 0.7
+FROM node:19-alpine3.16
+WORKDIR /node-server
+
+deps:
+  COPY package.json ./ 
+  RUN npm install
+
+build:
+  FROM +deps 
+  COPY src src 
+
+test:
+  FROM +build
+  RUN npm test
+
+docker:
+  ARG --required tag
+  FROM +build 
+  EXPOSE 8003 
+  ENTRYPOINT ["node", "src/index.js"]
+  SAVE IMAGE --push ezeev/earthly-node-example:$tag
