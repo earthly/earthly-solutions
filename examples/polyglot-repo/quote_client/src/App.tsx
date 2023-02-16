@@ -97,7 +97,7 @@ function App() {
           <div className='bg-gray-100 p-10 text-start mx-10'>
             <b>What is this?</b>
             <br />
-            This is an example application built with{' '}
+Hi VLAD            This is an example application built with{' '}
             <a href='https://earthly.dev' target='_blank' className='underline'>
               Earthly
             </a>{' '}
