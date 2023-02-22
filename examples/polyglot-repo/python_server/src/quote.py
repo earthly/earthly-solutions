@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 import random
 
-quotes = [
+quotes2 = [
     "You live and learn. At any rate, you live.",
     "This is another random quote from Earthly",
     "Progress is a nice word. But change is its motivator and change has its enemies.",
@@ -14,8 +14,17 @@ quotes = [
 app = Flask(__name__)
 CORS(app)
 
+
+def quotes():
+    qs = []
+    with open('quotes.txt', "r") as f:
+        for line in f:
+            qs.append(line.rstrip()) 
+    return qs
+
+
 def random_quote():
-    return random.choice(quotes)
+    return random.choice(quotes())
 
 # flask --app src/quote run --host=0.0.0.0 --port=8002
 # prod: gunicorn -w 4 'quote:app' -b 0.0.0.0:8002 --chdir src 

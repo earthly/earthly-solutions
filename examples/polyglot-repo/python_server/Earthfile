@@ -11,13 +11,18 @@ deps:
 build:
   FROM +deps 
   COPY src src 
+  #COPY quotes.txt ./
+  COPY ../quote_generator+artifact/quotes.txt quotes.txt
   SAVE ARTIFACT src /src 
   SAVE ARTIFACT wheels /wheels 
+  SAVE ARTIFACT quotes.txt ./
 
 
 test:
   COPY +build/src src 
   COPY +build/wheels wheels 
+  COPY +build/quotes.txt quotes.txt
+  #COPY ../quote_generator+artifact/quotes.txt quotes.txt
   COPY requirements.txt ./
   RUN pip install --no-index --find-links=wheels -r requirements.txt 
   RUN python src/test_quotes.py 
@@ -27,6 +32,8 @@ docker:
   ARG --required tag
   COPY +build/src src 
   COPY +build/wheels wheels 
+  # quotes.txt needs to go into src for gunicorn to pick it up
+  COPY +build/quotes.txt src/quotes.txt
   COPY start.sh ./
   COPY requirements.txt ./
   RUN pip install --no-index --find-links=wheels -r requirements.txt 

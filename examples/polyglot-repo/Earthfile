@@ -10,7 +10,7 @@ main-pipeline:
   BUILD +all-docker --tag=ci-build-0.11 --base_url=http://localhost
 
 all-build:
-  ARG --required base_url 
+  ARG base_url=http://localhost
   WAIT
     BUILD ./rust_server/+test
     BUILD ./go_server/+test
@@ -26,7 +26,7 @@ all-build:
  
 all-docker:
   ARG --required tag
-  ARG --required base_url
+  ARG base_url=http://localhost
   BUILD ./quote_client/+docker --tag=$tag --base_url=$base_url
   BUILD ./rust_server/+docker --tag=$tag
   BUILD ./go_server/+docker --tag=$tag
