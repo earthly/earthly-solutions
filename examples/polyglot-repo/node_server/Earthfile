@@ -9,6 +9,8 @@ deps:
 build:
   FROM +deps 
   COPY src src 
+  # Overwrite quotes
+  COPY ../quote_generator+artifact/quotes.txt quotes.txt
 
 test:
   FROM +build
