@@ -10,19 +10,22 @@ deps:
 
 test:
   FROM +deps 
-  COPY main.go quotes.go quotes_test.go .
+  COPY main.go quotes.go quotes_test.go quotes.txt .
   RUN go test -v -vet=off # vet=off prevents us from having to install gcc to run tests. See: https://github.com/golang/go/issues/42996
 
 
 build:
   FROM +deps
   COPY main.go quotes.go .
+  COPY ../quote_generator+artifact/quotes.txt quotes.txt
   RUN go build -o build/go-server .
   SAVE ARTIFACT build/go-server go-server 
+  SAVE ARTIFACT quotes.txt ./
 
 docker:
   ARG --required tag
   COPY +build/go-server . 
+  COPY +build/quotes.txt .
   EXPOSE 8001
   ENTRYPOINT ["./go-server"]
   SAVE IMAGE --push ezeev/earthly-go-example:$tag
