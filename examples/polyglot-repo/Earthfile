@@ -7,7 +7,7 @@ main-pipeline:
   TRIGGER push main 
   TRIGGER pr main 
   BUILD +all-build --base_url=http://localhost
-  BUILD +all-docker --tag=ci-build-0.14 --base_url=http://localhost
+  BUILD +all-docker --tag=ci-build-0.15 --base_url=http://localhost
 
 all-build:
   ARG base_url=http://localhost
