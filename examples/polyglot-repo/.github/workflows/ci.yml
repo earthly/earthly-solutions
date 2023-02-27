@@ -33,5 +33,3 @@ jobs:
       run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
     - name: Earthly version
       run: earthly --version
-    - name: Run build
-      run: earthly --version
