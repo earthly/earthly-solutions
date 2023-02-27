@@ -35,6 +35,8 @@ jobs:
     - name: Earthly version
       run: earthly --version
     - name: List satellites
+      env:
+        EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
       run: earthly sat --org earthly-sa ls
     - name: Build python
       run: earthly ./examples/polyglot-repo/python_server/+build
