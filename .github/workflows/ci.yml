@@ -35,7 +35,7 @@ jobs:
     - name: Earthly version
       run: earthly --version
     - name: Show docker username 
-      run: echo $DOCKERHUB_USERNAME
+      run: echo  ${{ secrets.DOCKERHUB_USERNAME }}
     - name: List satellites
       run: earthly sat --org earthly-sa ls
     - name: Build python
