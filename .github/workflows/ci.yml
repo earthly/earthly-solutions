@@ -35,8 +35,6 @@ jobs:
       run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
     - name: Earthly version
       run: earthly --version
-    - name: List satellites
-      run: earthly sat --org earthly-sa ls
     - name: Select first satellite 
       run: earthly sat --org earthly-sa select evan1 
     - name: Test python
@@ -69,8 +67,6 @@ jobs:
       run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
     - name: Earthly version
       run: earthly --version
-    - name: List satellites
-      run: earthly sat --org earthly-sa ls
     - name: Select second satellite 
       run: earthly sat --org earthly-sa select evan2 
     - name: Test Go 
