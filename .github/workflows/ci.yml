@@ -71,7 +71,7 @@ jobs:
       run: earthly --version
     - name: List satellites
       run: earthly sat --org earthly-sa ls
-    - name: Select first satellite 
+    - name: Select second satellite 
       run: earthly sat --org earthly-sa select evan2 
     - name: Test Go 
       run: earthly ./examples/polyglot-repo/go_server/+test
