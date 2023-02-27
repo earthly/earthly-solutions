@@ -14,6 +14,7 @@ jobs:
     env:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
       FORCE_COLOR: 1
     steps:
     - uses: earthly/actions/setup-earthly@v1
@@ -33,5 +34,7 @@ jobs:
       run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
     - name: Earthly version
       run: earthly --version
+    - name: List satellites
+      run: earthly sat --org earthly-sa ls
     - name: Build python
       run: earthly ./examples/polyglot-repo/python_server/+build
