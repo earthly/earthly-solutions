@@ -42,7 +42,7 @@ jobs:
     - name: Test python
       run: earthly ./examples/polyglot-repo/python_server/+test
     - name: Build and push python 
-      run: earthly --push .examples/polyglot-repo/python_server/+docker --tag=gh-actions-demo 
+      run: earthly --push ./examples/polyglot-repo/python_server/+docker --tag=gh-actions-demo 
   sat2:
     environment: "Actions Demo"
     runs-on: ubuntu-latest
