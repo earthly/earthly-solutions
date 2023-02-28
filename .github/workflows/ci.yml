@@ -39,13 +39,10 @@ jobs:
         parallel ::: 
         "earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test" 
         "earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test"
-        && echo OK - All tasks completed successfully
-
-
-
-
-
-    #- name: Run tests 
-    #  run: earthly ./examples/polyglot-repo/python_server/+test &
-    #- name: Build and push python 
-    #  run: earthly --push ./examples/polyglot-repo/python_server/+docker --tag=gh-actions-demo &
+        && echo OK - All tests completed successfully 
+    - name: Build and push images  
+      run: > 
+        parallel ::: 
+        "earthly --push --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+docker --tag=gh-actions-parallel"
+        "earthly --push --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+docker --tag=gh-actions-parallel"
+        && echo OK - All builds completed successfully
