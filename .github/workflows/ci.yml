@@ -38,8 +38,8 @@ jobs:
       run: > 
         parallel ::: 
         "earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test" 
-        "earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test2" 
-        && echo OK
+        "earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test"
+        && echo OK - All tasks completed successfully
 
 
 
