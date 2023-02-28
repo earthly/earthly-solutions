@@ -34,8 +34,10 @@ jobs:
       run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
     - name: Earthly version
       run: earthly --version
-    - name: Run jobs on first satellite
-      run: earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test 
+    - name: Run all tests  
+      run: > 
+        earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test & \
+        earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test &
 
 
 
