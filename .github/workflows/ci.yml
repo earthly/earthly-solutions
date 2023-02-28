@@ -36,6 +36,7 @@ jobs:
       run: earthly --version
     - name: Run all tests  
       run: > 
+        parallel ::: "echo 1" "echo 2" "echo 3" && echo OK
         earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test & 
         earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test2 &
 
