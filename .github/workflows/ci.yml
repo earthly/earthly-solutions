@@ -35,7 +35,7 @@ jobs:
     - name: Earthly version
       run: earthly --version
     - name: Run jobs on first satellite
-      run: earthly --sat evan1 ./examples/polyglot-repo/python_server+test 
+      run: earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test 
 
 
 
