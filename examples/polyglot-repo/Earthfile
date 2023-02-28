@@ -6,20 +6,21 @@ main-pipeline:
   PIPELINE 
   TRIGGER push main 
   TRIGGER pr main 
+  BUILD +all-test
   BUILD +all-build --base_url=http://localhost
   BUILD +all-docker --tag=ci-build-0.15 --base_url=http://localhost
 
 # TODO - AWS deployment w/ Terraform
+all-test:
+  BUILD ./rust_server/+test
+  BUILD ./go_server/+test
+  BUILD ./python_server/+test
+  BUILD ./node_server/+test
+  BUILD ./quote_client/+test
+
 
 all-build:
   ARG base_url=http://localhost
-  WAIT
-    BUILD ./rust_server/+test
-    BUILD ./go_server/+test
-    BUILD ./python_server/+test
-    BUILD ./node_server/+test
-    BUILD ./quote_client/+test
-  END
   BUILD ./quote_client/+build --base_url=$base_url
   BUILD ./rust_server/+build
   BUILD ./go_server/+build
