@@ -24,6 +24,7 @@ func main() {
     w.Header().Set("Content-Type", "text/plain; charset=utf-8")
     w.Header().Set("Access-Control-Allow-Origin", "*")
     w.Header().Set("Access-Control-Max-Age", "15")
+    logrus.Info("Hello from demo")
 		fmt.Fprint(w, RandomQuote(quotes))
 	})
 
