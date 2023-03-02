@@ -23,7 +23,7 @@ func main() {
 		logrus.Info(quote)
 		//fmt.Fprint(w, quote)
 
-		fmt.Fprint(w, "Hello from Earthly!")
+		fmt.Fprint(w, "Hello from Earthly CI!")
 
 	})
 
