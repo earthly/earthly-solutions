@@ -18,10 +18,13 @@ func main() {
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Max-Age", "15")
-		//fmt.Fprint(w, RandomQuote(quotes))
+		quote := RandomQuote(quotes)
 
-		logrus.Info(RandomQuote(quotes))
+		logrus.Info(quote)
+		//fmt.Fprint(w, quote)
+
 		fmt.Fprint(w, "Hello from Earthly CI!")
+
 	})
 
 	http.ListenAndServe(":8001", nil)
