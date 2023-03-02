@@ -1,7 +1,6 @@
 
 VERSION 0.7
 
-
 PROJECT earthly-sa/earthly-demo
 
 main-pipeline:
@@ -11,7 +10,6 @@ main-pipeline:
   BUILD +all-test
   BUILD +all-build --base_url=http://localhost
   BUILD +all-docker --tag=ci-demo --base_url=http://localhost
-
 
 all-test:
   BUILD ./rust_server/+test
@@ -51,5 +49,4 @@ dev-down:
 
 
 # TODO - Add WITH DOCKER integration tests here
-
-
+# bump
