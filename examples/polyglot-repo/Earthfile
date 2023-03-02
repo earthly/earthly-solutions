@@ -1,6 +1,7 @@
 
 VERSION 0.7
 
+
 PROJECT earthly-sa/earthly-demo
 
 main-pipeline:
@@ -47,5 +48,4 @@ dev-down:
   RUN docker-compose down
 
 
-#bump
 # TODO - Add WITH DOCKER integration tests here
