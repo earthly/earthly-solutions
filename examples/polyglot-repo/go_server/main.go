@@ -2,14 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/sirupsen/logrus"
 )
-
-
-
 
 
 func main() {
@@ -17,7 +13,7 @@ func main() {
 
   quotes, err := Quotes() 
   if err != nil {
-    log.Fatal(err)
+    logrus.Fatal(err)
   }
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -26,8 +22,10 @@ func main() {
     w.Header().Set("Access-Control-Max-Age", "15")
     logrus.Info("Hello from demo")
 		fmt.Fprint(w, RandomQuote(quotes))
+    //logrus.Info(RandomQuote(quotes))
+
+    fmt.Fprint(w, "Hello from demo")
 	})
 
-	logrus.Info("Serving Go server on port 8001")
 	http.ListenAndServe(":8001", nil)
 }
