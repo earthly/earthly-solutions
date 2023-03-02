@@ -2,13 +2,14 @@
 VERSION 0.7
 PROJECT earthly-sa/earthly-demo
 
+
 main-pipeline:
   PIPELINE 
   TRIGGER push main 
   TRIGGER pr main 
   BUILD +all-test
   BUILD +all-build --base_url=http://localhost
-  BUILD +all-docker --tag=ci-build-0.15 --base_url=http://localhost
+  BUILD +all-docker --tag=ci-demo --base_url=http://localhost
 
 # TODO - AWS deployment w/ Terraform
 all-test:
