@@ -5,7 +5,7 @@ VERSION 0.7
 PROJECT earthly-sa/earthly-demo
 
 main-pipeline:
-  PIPELINE 
+  PIPELINE --push 
   TRIGGER push main 
   TRIGGER pr main 
   BUILD +all-test
