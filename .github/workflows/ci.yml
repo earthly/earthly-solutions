@@ -16,6 +16,7 @@ jobs:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
       FORCE_COLOR: 1
+      EARTHLY_LOGSTREAM_UPLOAD: true
     steps:
     - uses: earthly/actions/setup-earthly@v1
       with:
