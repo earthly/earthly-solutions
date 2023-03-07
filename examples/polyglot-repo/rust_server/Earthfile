@@ -5,6 +5,7 @@ WORKDIR /rust-server
 
 deps:
   COPY --dir src Cargo.lock Cargo.toml Rocket.toml quotes.txt .
+  RUN cargo update
   
 test:
   FROM +deps
