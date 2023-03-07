@@ -19,7 +19,6 @@ all-test:
   BUILD ./node_server/+test
   BUILD ./quote_client/+test
 
-
 all-build:
   ARG base_url=http://localhost
   BUILD ./quote_client/+build --base_url=$base_url
