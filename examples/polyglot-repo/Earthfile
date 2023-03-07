@@ -12,6 +12,7 @@ main-pipeline:
   BUILD +all-build --base_url=http://localhost
   BUILD +all-docker --tag=ci-demo --base_url=http://localhost
 
+
 all-test:
   BUILD ./rust_server/+test
   BUILD ./go_server/+test
@@ -45,5 +46,6 @@ dev-up:
 dev-down:
   LOCALLY
   RUN docker-compose down
+  
 #bump
 # TODO - Add WITH DOCKER integration tests here
