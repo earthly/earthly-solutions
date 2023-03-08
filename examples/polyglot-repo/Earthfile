@@ -40,12 +40,10 @@ all-docker:
 dev-up:
   ARG --required tag
   LOCALLY
-  #RUN TAG=$tag docker-compose pull
   RUN TAG=$tag docker-compose up
 
 dev-down:
   LOCALLY
   RUN docker-compose down
   
-#bump
 # TODO - Add WITH DOCKER integration tests here
