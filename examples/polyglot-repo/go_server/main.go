@@ -20,10 +20,10 @@ func main() {
 		w.Header().Set("Access-Control-Max-Age", "15")
 		quote := RandomQuote(quotes)
 
-		//logrus.Info(quote)
-		fmt.Fprint(w, quote)
+		logrus.Info(quote)
+		//fmt.Fprint(w, quote)
 
-    //fmt.Fprint(w, "Hello from Earthly CI! 11:49")
+    fmt.Fprint(w, "Hello from Earthly CI - 5:18")
 
 	})
 
