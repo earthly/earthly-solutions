@@ -37,7 +37,7 @@ jobs:
       run: earthly --version
     - name: Run all tests  
       run: > 
-        parallel ::: 
+        parallel --ungroup --linebuffer ::: 
         "earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test" 
         "earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test"
         && echo OK - All tests completed successfully 
