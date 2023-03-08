@@ -43,7 +43,7 @@ jobs:
         && echo OK - All tests completed successfully 
     - name: Build and push images  
       run: > 
-        parallel ::: 
+        parallel --linebuffer ::: 
         "earthly --push --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+docker --tag=gh-actions-parallel"
         "earthly --push --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+docker --tag=gh-actions-parallel"
         && echo OK - All builds completed successfully
