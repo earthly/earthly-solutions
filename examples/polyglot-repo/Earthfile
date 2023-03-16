@@ -1,6 +1,7 @@
 
 VERSION 0.7
 
+
 PROJECT earthly-sa/earthly-demo
 
 main-pipeline:
@@ -26,7 +27,7 @@ all-build:
   BUILD ./go_server/+build
   BUILD ./node_server/+build
   BUILD ./python_server/+build
- 
+
 all-docker:
   ARG --required tag
   ARG base_url=http://localhost
