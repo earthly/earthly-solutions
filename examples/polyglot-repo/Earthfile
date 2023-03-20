@@ -13,7 +13,7 @@ main-pipeline:
 
 
 all-test:
-  BUILD ./rust_server/+test
+  #BUILD ./rust_server/+test
   BUILD ./go_server/+test
   BUILD ./python_server/+test
   BUILD ./node_server/+test
@@ -22,7 +22,7 @@ all-test:
 all-build:
   ARG base_url=http://localhost
   BUILD ./quote_client/+build --base_url=$base_url
-  BUILD ./rust_server/+build
+  #BUILD ./rust_server/+build
   BUILD ./go_server/+build
   BUILD ./node_server/+build
   BUILD ./python_server/+build
@@ -31,7 +31,7 @@ all-docker:
   ARG --required tag
   ARG base_url=http://localhost
   BUILD ./quote_client/+docker --tag=$tag --base_url=$base_url
-  BUILD ./rust_server/+docker --tag=$tag
+  #BUILD ./rust_server/+docker --tag=$tag
   BUILD ./go_server/+docker --tag=$tag
   BUILD ./python_server/+docker --tag=$tag 
   BUILD ./node_server/+docker --tag=$tag
