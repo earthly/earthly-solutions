@@ -1,7 +1,6 @@
 
 VERSION 0.7
 
-
 PROJECT earthly-sa/earthly-demo
 
 main-pipeline:
