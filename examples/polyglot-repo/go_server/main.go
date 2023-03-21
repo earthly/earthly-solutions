@@ -21,9 +21,9 @@ func main() {
 		quote := RandomQuote(quotes)
 
 		logrus.Info(quote)
-		//fmt.Fprint(w, quote)
+		fmt.Fprint(w, quote)
 
-    fmt.Fprint(w, "Hello from Earthly CI - 11:14AM")
+    //fmt.Fprint(w, "Hello from Earthly")
 
 	})
 
