@@ -20,7 +20,8 @@ jobs:
         working-directory: examples/polyglot-repo/go_server
         run: |
           go mod download
-          go build
+          go build -o go-server
+          ls
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
