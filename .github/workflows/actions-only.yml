@@ -12,6 +12,7 @@ jobs:
     environment: "Go service"
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Go Service Build
         #working-directory: examples/polyglot-repo/go_server
         run: ls
