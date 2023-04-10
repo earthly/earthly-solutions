@@ -46,7 +46,10 @@ jobs:
       - uses: actions-rs/cargo@v1
       - name: Rust Service Build
         working-directory: examples/polyglot-repo/rust_server
-        run: cargo build
+        run: |
+          cargo build
+          ls ~/.cargo
+          ls .cargo
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
