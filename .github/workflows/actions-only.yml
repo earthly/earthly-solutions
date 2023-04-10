@@ -23,7 +23,7 @@ jobs:
           go build -o go-server
           ls
       - name: Go Service Test
-        #working-directory: examples/polyglot-repo/go_server
+        working-directory: examples/polyglot-repo/go_server
         run: go test -v -vet=off
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
