@@ -8,18 +8,19 @@ on:
     branches:
       - "gh-actions"
 jobs:
-  sat1:
-    environment: "Actions Demo"
+  go_service_build:
+    environment: "Go service"
     runs-on: ubuntu-latest
-    env:
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
-      FORCE_COLOR: 1
-      EARTHLY_LOGSTREAM_UPLOAD: true
+    working-directory: ./examples/polyglot-repo/go_server
     steps:
-      - name: Docker Login
-        run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
+      - name: Go Service Build
+        run: pwd
+    # env:
+    #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    # steps:
+    #   - name: Docker Login
+    #     run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
     # - name: Run all tests
     #   run: >
     #     parallel --linebuffer :::
