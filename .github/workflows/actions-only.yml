@@ -43,8 +43,8 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: "stable"
+      - uses: actions-rs/cargo@v1
       - name: Rust Service Build
-        uses: actions-rs/cargo@v1
         working-directory: examples/polyglot-repo/rust_server
         run: cargo build --release --bin quote_server
     # env:
