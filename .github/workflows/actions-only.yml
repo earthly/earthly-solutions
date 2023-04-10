@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Go Service Build
-        #working-directory: examples/polyglot-repo/go_server
+        working-directory: examples/polyglot-repo/go_server
         run: ls
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
