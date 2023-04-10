@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Go Service Build
-        working-directory: /examples/polyglot-repo/go_server
+        working-directory: ../examples/polyglot-repo/go_server
         run: pwd
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
