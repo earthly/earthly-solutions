@@ -14,7 +14,7 @@ thread_local!(static QUOTES: Vec<String> = quote_generator::load_quotes());
 
 #[get("/")]
 fn index() -> String {
-    println!("Change to force recompilation");
+    println!("Hello, world!");
     QUOTES.with(|quotes| quote_generator::random_quote(quotes).to_string())
 }
 

@@ -1,19 +1,23 @@
 VERSION 0.7
-FROM  rust:1.66-slim-buster
+FROM  rust:1.68
 WORKDIR /rust-server
 
 
 deps:
-  COPY --dir src Cargo.lock Cargo.toml Rocket.toml quotes.txt .
-  
+  COPY Cargo.lock Cargo.toml Rocket.toml quotes.txt .
+  RUN mkdir src
+  RUN touch src/main.rs # adding main.rs stub so cargo fetch works to prepare the cache
+  RUN cargo fetch 
+
 test:
   FROM +deps
   RUN cargo test
 
 build:
   FROM +deps
-  RUN cargo build --release --bin quote_server
-  SAVE ARTIFACT target/release/quote_server quote_server
+  COPY --dir src .
+  RUN cargo build --bin quote_server
+  SAVE ARTIFACT target/debug/quote_server quote_server
 
 docker:
   ARG --required tag
