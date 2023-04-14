@@ -1,0 +1,69 @@
+name: GH-Actions
+
+on:
+  push:
+    branches:
+      - "gh-actions"
+  pull_request:
+    branches:
+      - "gh-actions"
+
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  go_service_build:
+    environment: "Go service"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: ">=1.20.0"
+      - name: Go Service Build
+        working-directory: examples/polyglot-repo/go_server
+        run: |
+          go mod download
+          go build -o go-server
+          ls
+      - name: Go Service Test
+        working-directory: examples/polyglot-repo/go_server
+        run: go test -v -vet=off
+  rust_service_build:
+    environment: "Rust service"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            examples/polyglot-repo/rust_server/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: "stable"
+      - uses: actions-rs/cargo@v1
+      - name: Rust Service Build
+        working-directory: examples/polyglot-repo/rust_server
+        run: |
+          cargo build
+          ls ~/.cargo
+    # env:
+    #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    # steps:
+    #   - name: Docker Login
+    #     run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
+    # - name: Run all tests
+    #   run: >
+    #     parallel --linebuffer :::
+    #     "earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test"
+    #     "earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test"
+    #     && echo OK - All tests completed successfully
+    # - name: Build and push images
+    #   run: >
+    #     parallel --linebuffer :::
+    #     "earthly --push --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+docker --tag=gh-actions-parallel"
+    #     "earthly --push --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+docker --tag=gh-actions-parallel"
+    #     && echo OK - All builds completed successfully
