@@ -4,24 +4,24 @@ services:
     platform: linux/amd64
     image: ezeev/earthly-react-example:${TAG}
     ports:
-      - 3001:80 
+      - 3001:80
   rust:
     platform: linux/amd64
     image: ezeev/earthly-rust-example:${TAG}
     ports:
       - 8000:8000
   go:
-    platform: linux/amd64 
+    platform: linux/amd64
     image: ezeev/earthly-go-example:${TAG}
     ports:
       - 8001:8001
   python:
-    platform: linux/amd64 
+    platform: linux/amd64
     image: ezeev/earthly-python-example:${TAG}
     ports:
       - 8002:8002
   node:
-    platform: linux/amd64 
+    platform: linux/amd64
     image: ezeev/earthly-node-example:${TAG}
     ports:
       - 8003:8003
