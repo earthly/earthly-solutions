@@ -35,5 +35,5 @@ jobs:
         run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
       - name: Earthly version
         run: earthly --version
-      - name: Run all tests
+      - name: Run CI pipeline
         run: "earthly --sat evan1 --org earthly-sa --push ./examples/polyglot-repo/+main-pipeline --tag=gh-sat-demo"
