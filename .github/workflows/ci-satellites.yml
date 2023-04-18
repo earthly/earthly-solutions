@@ -36,4 +36,4 @@ jobs:
       - name: Earthly version
         run: earthly --version
       - name: Run all tests
-        run: "earthly --sat evan1 --org earthly-sa --push ./examples/polyglot-repo/+main-pipeline"
+        run: "earthly --sat evan1 --org earthly-sa --push ./examples/polyglot-repo/+main-pipeline --tag=gh-sat-demo"
