@@ -36,9 +36,6 @@ jobs:
       - name: Go Service Test
         working-directory: examples/polyglot-repo/go_server
         run: go test -v -vet=off
-      - name: Go Service Docker
-        working-directory: examples/polyglot-repo/go_server
-
   rust_service_build:
     environment: "Rust service"
     runs-on: ubuntu-latest
