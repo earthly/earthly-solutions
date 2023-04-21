@@ -3,10 +3,10 @@ name: GH-Actions
 on:
   push:
     branches:
-      - "gh-actions"
+      - "main"
   pull_request:
     branches:
-      - "gh-actions"
+      - "main"
 
 env:
   CARGO_TERM_COLOR: always
@@ -48,7 +48,9 @@ jobs:
         working-directory: examples/polyglot-repo/rust_server
         run: |
           cargo build
-          ls ~/.cargo
+      - name: Rust Service Test
+        working-directory: examples/polyglot-repo/rust_server
+        run: cargo test
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
