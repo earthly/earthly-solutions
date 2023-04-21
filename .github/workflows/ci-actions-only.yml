@@ -25,6 +25,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContect}}:examples/polyglot-repo/go_server"
           push: true
           tags: ezeev/earthly-go-example:gh-actions-only
       - name: Go Service Build
