@@ -19,6 +19,10 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version: ">=1.20.0"
+      - uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Go Service Build
         working-directory: examples/polyglot-repo/go_server
         run: |
@@ -28,6 +32,12 @@ jobs:
       - name: Go Service Test
         working-directory: examples/polyglot-repo/go_server
         run: go test -v -vet=off
+      - name: Go Service Docker
+        working-directory: examples/polyglot-repo/go_server
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ezeev/earthly-go-example:gh-actions-only
   rust_service_build:
     environment: "Rust service"
     runs-on: ubuntu-latest
