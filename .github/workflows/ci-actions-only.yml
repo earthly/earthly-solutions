@@ -40,7 +40,7 @@ jobs:
         working-directory: examples/polyglot-repo/go_server
         run: go test -v -vet=off
   rust_service_build:
-    environment: "Rust service"
+    environment: "Actions Demo"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
