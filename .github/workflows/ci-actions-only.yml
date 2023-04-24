@@ -64,7 +64,6 @@ jobs:
           toolchain: "stable"
       - uses: actions-rs/cargo@v1
       - name: Rust Service Test
-        cache: enabled
         working-directory: examples/polyglot-repo/rust_server
         run: cargo test
     # env:
