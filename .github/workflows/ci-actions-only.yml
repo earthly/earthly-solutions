@@ -28,8 +28,6 @@ jobs:
           context: "{{defaultContect}}examples/polyglot-repo/go_server"
           push: true
           tags: ezeev/earthly-go-example:gh-actions-only
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - name: Go Service Build
         working-directory: examples/polyglot-repo/go_server
         run: |
@@ -45,7 +43,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: docker/login-action@v2
-        cache: enabled
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -54,8 +51,6 @@ jobs:
           context: "{{defaultContect}}examples/polyglot-repo/rust_server"
           push: true
           tags: ezeev/earthly-rust-example:gh-actions-only
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - uses: actions/checkout@v3
       - uses: actions/cache@v2
         with:
