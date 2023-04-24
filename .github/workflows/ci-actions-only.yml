@@ -42,7 +42,7 @@ jobs:
   rust_service_build:
     environment: "Rust service"
     runs-on: ubuntu-latest
-      steps:
+    steps:
       - uses: actions/checkout@v3
       - uses: docker/login-action@v2
         with:
