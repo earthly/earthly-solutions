@@ -147,7 +147,7 @@ jobs:
       - name: React Setup
         working-directory: examples/polyglot-repo/quote_client
         run: >
-          npm install -g typescript
+          npm install -g typescript &&
           npm install
       - name: React Service Build
         working-directory: examples/polyglot-repo/quote_client
