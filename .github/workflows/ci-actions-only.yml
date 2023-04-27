@@ -122,6 +122,42 @@ jobs:
       - name: Node Service Test
         working-directory: examples/polyglot-repo/node_server
         run: npm test
+  react_service_build:
+    environment: "Actions Demo"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # - uses: docker/build-push-action@v4
+      #   with:
+      #     context: "{{defaultContect}}examples/polyglot-repo/node_server"
+      #     push: true
+      #     tags: ezeev/earthly-node-example:gh-actions-only
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: examples/polyglot-repo/quote_client/node_modules
+          key: ${{ runner.os }}-react-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "19.x"
+      - name: React Setup
+        working-directory: examples/polyglot-repo/node_server
+        run: >
+          npm install -g typescript
+          npm install
+      - name: React Service Build
+        working-directory: examples/polyglot-repo/node_server
+        run: >
+          VITE_RUST_SERVER=http://localhost:8000
+          VITE_GO_SERVER=http://localhost:8001
+          VITE_PYTHON_SERVER=http://localhost:8002
+          VITE_NODE_SERVER=http://localhost:8003
+          npm run build
+          ls dist/
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
