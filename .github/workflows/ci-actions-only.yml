@@ -92,7 +92,7 @@ jobs:
         working-directory: examples/polyglot-repo/python_server
         run: pip install -r requirements.txt
       - name: Python Service Test
-        working-directory: examples/polyglod-repo/python_server
+        working-directory: examples/polyglot-repo/python_server
         run: python src/test_quotes.py
   node_service_build:
     environment: "Actions Demo"
@@ -117,10 +117,10 @@ jobs:
         with:
           node-version: "19.x"
       - name: Node Service Build
-        working-directory: examples/polyglot-repo/node_service
+        working-directory: examples/polyglot-repo/node_server
         run: npm install
       - name: Node Service Test
-        working-directory: examples/polyglot-repo/node_service
+        working-directory: examples/polyglot-repo/node_server
         run: npm test
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
