@@ -75,11 +75,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - uses: docker/build-push-action@v4
-        with:
-          context: "{{defaultContect}}examples/polyglot-repo/rust_server"
-          push: true
-          tags: ezeev/earthly-python-example:gh-actions-only
+      # - uses: docker/build-push-action@v4
+      #   with:
+      #     context: "{{defaultContect}}examples/polyglot-repo/python_server"
+      #     push: true
+      #     tags: ezeev/earthly-python-example:gh-actions-only
       - uses: actions/checkout@v3
       - uses: actions/cache@v2
         with:
@@ -90,7 +90,7 @@ jobs:
           python-version: "3.11"
       - name: Python Service Build
         working-directory: examples/polyglot-repo/python_server
-        run: pip install --no-index --find-links=wheels -r requirements.txt
+        run: pip install -r requirements.txt
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
