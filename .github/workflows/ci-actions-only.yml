@@ -1,4 +1,4 @@
-name: GH-Actions
+name: GH-Actions-Only
 
 on:
   push:
@@ -66,6 +66,31 @@ jobs:
       - name: Rust Service Test
         working-directory: examples/polyglot-repo/rust_server
         run: cargo test
+  python_service_build:
+    environment: "Actions Demo"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContect}}examples/polyglot-repo/rust_server"
+          push: true
+          tags: ezeev/earthly-python-example:gh-actions-only
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: examples/polyglot-repo/python_server/__pycache__
+          key: ${{ runner.os }}-python-${{ hashFiles('**/requirements.txt') }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Python Service Build
+        working-directory: examples/polyglot-repo/python_server
+        run: pip install --no-index --find-links=wheels -r requirements.txt
     # env:
     #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}

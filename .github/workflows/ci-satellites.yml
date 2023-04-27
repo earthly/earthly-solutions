@@ -1,4 +1,4 @@
-name: GH-Actions-Demo
+name: GH-Actions-Satellites
 
 on:
   push:
