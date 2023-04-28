@@ -131,11 +131,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      # - uses: docker/build-push-action@v4
-      #   with:
-      #     context: "{{defaultContect}}examples/polyglot-repo/node_server"
-      #     push: true
-      #     tags: ezeev/earthly-node-example:gh-actions-only
+      - uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContect}}examples/polyglot-repo/quote_client"
+          push: true
+          tags: ezeev/earthly-react-example:gh-actions-only
       - uses: actions/checkout@v3
       - uses: actions/cache@v2
         with:
