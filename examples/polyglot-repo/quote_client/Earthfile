@@ -8,7 +8,6 @@ deps:
   RUN yarn global add typescript
   RUN yarn
 
-
 test:
   FROM +deps
   RUN ls public/
@@ -30,4 +29,3 @@ docker:
   COPY +build/dist /usr/share/nginx/html/
   EXPOSE 80 
   SAVE IMAGE --push ezeev/earthly-react-example:$tag
-
