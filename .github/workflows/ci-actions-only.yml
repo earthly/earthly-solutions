@@ -51,7 +51,6 @@ jobs:
           context: "{{defaultContect}}examples/polyglot-repo/rust_server"
           push: true
           tags: ezeev/earthly-rust-example:gh-actions-only
-      - uses: actions/checkout@v3
       - uses: actions/cache@v2
         with:
           path: |
@@ -81,10 +80,13 @@ jobs:
           push: true
           tags: ezeev/earthly-python-example:gh-actions-only
       - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: examples/polyglot-repo/python_server/__pycache__
+          key: ${{ runner.os }}-python-${{ hashFiles('**/requirements.txt') }}
       - uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-          cache: "pip"
       - name: Python Service Build
         working-directory: examples/polyglot-repo/python_server
         run: pip install -r requirements.txt
@@ -105,6 +107,7 @@ jobs:
           context: "{{defaultContect}}examples/polyglot-repo/node_server"
           push: true
           tags: ezeev/earthly-node-example:gh-actions-only
+      - uses: actions/checkout@v3
       - uses: actions/cache@v2
         with:
           path: examples/polyglot-repo/node_server/node_modules
@@ -112,7 +115,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "19.x"
-          cache: "npm"
       - name: Node Service Build
         working-directory: examples/polyglot-repo/node_server
         run: npm install
