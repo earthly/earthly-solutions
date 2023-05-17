@@ -156,21 +156,3 @@ jobs:
           VITE_PYTHON_SERVER=http://localhost:8002
           VITE_NODE_SERVER=http://localhost:8003
           npm run build
-    # env:
-    #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-    #   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-    # steps:
-    #   - name: Docker Login
-    #     run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
-    # - name: Run all tests
-    #   run: >
-    #     parallel --linebuffer :::
-    #     "earthly --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+test"
-    #     "earthly --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+test"
-    #     && echo OK - All tests completed successfully
-    # - name: Build and push images
-    #   run: >
-    #     parallel --linebuffer :::
-    #     "earthly --push --sat evan1 --org earthly-sa ./examples/polyglot-repo/python_server+docker --tag=gh-actions-parallel"
-    #     "earthly --push --sat evan2 --org earthly-sa ./examples/polyglot-repo/go_server+docker --tag=gh-actions-parallel"
-    #     && echo OK - All builds completed successfully
