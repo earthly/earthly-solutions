@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Copy quotes
-        working-directory: examples/polyglot-repo/go_server
+        working-directory: "{{defaultContect}}examples/polyglot-repo/go_server"
         run: cp ../quote_generator/in.txt quotes.txt
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
