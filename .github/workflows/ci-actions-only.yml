@@ -145,12 +145,15 @@ jobs:
     environment: "Actions Demo"
     runs-on: ubuntu-latest
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - uses: actions/checkout@v3
       - uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - uses: docker/setup-qemu-action@v2
       - uses: docker/build-push-action@v4
         with:
           context: "{{defaultContect}}examples/polyglot-repo/quote_client"
@@ -158,7 +161,6 @@ jobs:
           tags: ezeev/earthly-react-example:gh-actions-only
           cache-from: type=gha
           cache-to: type=gha
-      - uses: actions/checkout@v3
       - uses: actions/cache@v2
         with:
           path: examples/polyglot-repo/quote_client/node_modules
