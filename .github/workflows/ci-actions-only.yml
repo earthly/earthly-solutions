@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Copy quotes
+      - name: Copy shared dependecy
         working-directory: examples/polyglot-repo/go_server
         run: cp ../quote_generator/in.txt quotes.txt
       - uses: actions/setup-go@v4
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Copy quotes
+      - name: Copy shared dependecy
         working-directory: examples/polyglot-repo/rust_server
         run: cp ../quote_generator/in.txt quotes.txt
       - uses: docker/login-action@v2
@@ -76,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Copy quotes
+      - name: Copy shared dependecy
         working-directory: examples/polyglot-repo/python_server
         run: cp ../quote_generator/in.txt quotes.txt
       - uses: docker/login-action@v2
@@ -107,7 +107,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Copy quotes
+      - name: Copy shared dependecy
         working-directory: examples/polyglot-repo/node_server
         run: cp ../quote_generator/in.txt quotes.txt
       - uses: docker/login-action@v2
