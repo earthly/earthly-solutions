@@ -150,6 +150,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/setup-qemu-action@v2
       - uses: docker/build-push-action@v4
         with:
           context: "{{defaultContect}}examples/polyglot-repo/quote_client"
