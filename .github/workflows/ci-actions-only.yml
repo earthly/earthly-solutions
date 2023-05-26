@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}examples/polyglot-repo/go_server"
+          context: "{{defaultContect}}examples/polyglot-repo/go_server"
           push: true
           tags: ezeev/earthly-go-example:gh-actions-only
           cache-from: type=gha
@@ -63,7 +63,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}examples/polyglot-repo/rust_server"
+          context: "{{defaultContect}}examples/polyglot-repo/rust_server"
           push: true
           tags: ezeev/earthly-rust-example:gh-actions-only
           cache-from: type=gha
@@ -101,7 +101,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}examples/polyglot-repo/python_server"
+          context: "{{defaultContect}}examples/polyglot-repo/python_server"
           push: true
           tags: ezeev/earthly-python-example:gh-actions-only
           cache-from: type=gha
@@ -138,7 +138,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}examples/polyglot-repo/node_server"
+          context: "{{defaultContect}}examples/polyglot-repo/node_server"
           push: true
           tags: ezeev/earthly-node-example:gh-actions-only
           cache-from: type=gha
@@ -171,7 +171,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}examples/polyglot-repo/quote_client"
+          context: "{{defaultContect}}examples/polyglot-repo/quote_client"
           push: true
           tags: ezeev/earthly-react-example:gh-actions-only
           cache-from: type=gha
@@ -196,4 +196,3 @@ jobs:
           VITE_PYTHON_SERVER=http://localhost:8002
           VITE_NODE_SERVER=http://localhost:8003
           npm run build
-#bump
