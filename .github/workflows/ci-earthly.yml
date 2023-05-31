@@ -1,4 +1,4 @@
-name: GH-Actions-Satellites
+name: GH-Actions-Earthly-No-Satellite
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     branches:
       - "main"
 jobs:
-  satellites-build:
+  earthly-build:
     environment: "Actions Demo"
     runs-on: ubuntu-latest
     env:
@@ -36,4 +36,4 @@ jobs:
       - name: Earthly version
         run: earthly --version
       - name: Run CI pipeline
-        run: "earthly --ci --sat evan1 --org earthly-sa --push +main-pipeline --tag=gh-sat-demo"
+        run: "earthly --ci --push +main-pipeline --tag=gh-gha-earthly-nosat"
