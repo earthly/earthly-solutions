@@ -1,23 +1,19 @@
-VERSION 0.7
-FROM  rust:1.68
+VERSION --global-cache 0.7
+IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
+
+FROM  rust:slim-buster
 WORKDIR /rust-server
 
-
-deps:
+build:
+  DO rust+INIT --keep_fingerprints=true
   COPY Cargo.lock Cargo.toml Rocket.toml quotes.txt .
-  RUN mkdir src
-  RUN touch src/main.rs # adding main.rs stub so cargo fetch works to prepare the cache
-  RUN cargo fetch 
+  COPY --dir src .
+  DO rust+CARGO --args="build --release --bin quote_server" --output="release/[^/\.]+"
+  SAVE ARTIFACT target/release/quote_server quote_server
 
 test:
   FROM +deps
-  RUN cargo test
-
-build:
-  FROM +deps
-  COPY --dir src .
-  RUN cargo build --bin quote_server
-  SAVE ARTIFACT target/debug/quote_server quote_server
+  DO rust+CARGO --args="test"
 
 docker:
   ARG --required tag
