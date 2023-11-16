@@ -12,7 +12,7 @@ build:
   SAVE ARTIFACT target/release/quote_server quote_server
 
 test:
-  FROM +deps
+  FROM +build
   DO rust+CARGO --args="test"
 
 docker:
